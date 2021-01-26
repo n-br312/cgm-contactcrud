@@ -1,0 +1,41 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "de.nbr"
+    },
+    "jhipsterVersion": "6.10.5",
+    "applicationType": "monolith",
+    "baseName": "cgm_contactcrud",
+    "packageName": "de.nbr",
+    "packageFolder": "de/nbr",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ZmNkOWM1ZGU4YjY4MmZlYThlZWQ2MzU5MDQwY2Q2ZWVmZjdhNDYxMTYzMDA4MzY5ZmZmMjk5OTZkODUyZTFjM2FhZGI2ZmQ1MThhZDFmNTI3YTBiZGQ5YzRhZmM3NWU0ZDc4MmUzZWUzMzg4YWFmNmM1YzAxZmRlNjUxZTI1ODY=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "materia",
+    "clientThemeVariant": "primary",
+    "creationTimestamp": 1611664642096,
+    "testFrameworks": ["protractor"],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "blueprints": [],
+    "skipUserManagement": true
+  }
+}
