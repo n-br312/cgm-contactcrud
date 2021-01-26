@@ -1,0 +1,14 @@
+entity Patient {
+    firstname String required
+    surname String required
+    email String pattern(/^[A-Za-z]+@[A-Za-z]+\.[A-Za-z]+$/)
+	phoneNumber String
+	street String required
+    houseNumber Integer required
+    zipcode Integer required
+    city String required
+    country String required
+    note String
+}
+
+paginate Patient with pagination
