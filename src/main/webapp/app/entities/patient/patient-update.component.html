@@ -6,6 +6,10 @@
             <div>
                 <jhi-alert-error></jhi-alert-error>
 
+                <div class="alert alert-danger" *ngIf="errorPatientDuplicate">
+                    <strong>Patient with same name already exists!</strong> Please choose another one.
+                </div>
+
                 <div class="form-group" [hidden]="!editForm.get('id')!.value">
                     <label for="id">ID</label>
                     <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
@@ -88,6 +92,12 @@
                     <input type="text" class="form-control" name="note" id="field_note"
                            formControlName="note"/>
                 </div>
+            </div>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <div class="alert alert-danger" *ngIf="errorPatientDuplicate">
+                <strong>Patient with same name already exists!</strong> Please choose another one.
             </div>
 
             <div>

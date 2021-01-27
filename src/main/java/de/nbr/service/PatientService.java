@@ -2,6 +2,8 @@ package de.nbr.service;
 
 import de.nbr.domain.Patient;
 import de.nbr.repository.PatientRepository;
+import de.nbr.service.dto.PatientCriteria;
+import io.github.jhipster.service.filter.StringFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,8 +35,14 @@ public class PatientService {
      * @param patient the entity to save.
      * @return the persisted entity.
      */
-    public Patient save(Patient patient) {
+    public Patient save(Patient patient) throws PatientAlreadyExistingException {
         log.debug("Request to save Patient : {}", patient);
+        PatientCriteria criteria = new PatientCriteria();
+        criteria.setFirstname(new StringFilter().setContains(patient.getFirstname()));
+        criteria.setSurname(new StringFilter().setContains(patient.getSurname()));
+        if (patientRepository.countByFirstnameAndSurname(patient.getFirstname(), patient.getSurname()) > 0) {
+            throw new PatientAlreadyExistingException();
+        }
         return patientRepository.save(patient);
     }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 
 import { IPatient, Patient } from 'app/shared/model/patient.model';
 import { PatientService } from './patient.service';
+import { PATIENT_DUPLICATE_TYPE } from 'app/shared/constants/error.constants';
 
 @Component({
   selector: 'jhi-patient-update',
@@ -14,6 +15,8 @@ import { PatientService } from './patient.service';
 })
 export class PatientUpdateComponent implements OnInit {
   isSaving = false;
+
+  errorPatientDuplicate = false;
 
   editForm = this.fb.group({
     id: [],
@@ -87,16 +90,20 @@ export class PatientUpdateComponent implements OnInit {
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IPatient>>): void {
     result.subscribe(
       () => this.onSaveSuccess(),
-      () => this.onSaveError()
+      response => this.onSaveError(response)
     );
   }
 
   protected onSaveSuccess(): void {
     this.isSaving = false;
+    this.errorPatientDuplicate = false;
     this.previousState();
   }
 
-  protected onSaveError(): void {
+  protected onSaveError(response: HttpErrorResponse): void {
+    if (response.status === 400 && response.error.type === PATIENT_DUPLICATE_TYPE) {
+      this.errorPatientDuplicate = true;
+    }
     this.isSaving = false;
   }
 }

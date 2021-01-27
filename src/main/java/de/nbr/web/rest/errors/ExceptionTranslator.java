@@ -121,6 +121,12 @@ public class ExceptionTranslator implements ProblemHandling, SecurityAdviceTrait
         return create(ex, problem, request);
     }
 
+    @ExceptionHandler
+    public ResponseEntity<Problem> handlePatientAlreadyExistingException(de.nbr.service.PatientAlreadyExistingException ex, NativeWebRequest request) {
+        PatientDuplicateAlertException problem = new PatientDuplicateAlertException();
+        return create(problem, request, HeaderUtil.createFailureAlert(applicationName,  true, problem.getEntityName(), problem.getErrorKey(), problem.getMessage()));
+    }
+
     @Override
     public ProblemBuilder prepare(final Throwable throwable, final StatusType status, final URI type) {
 
