@@ -4,6 +4,7 @@ import { JhiEventManager, JhiAlert, JhiAlertService, JhiEventWithContent } from 
 import { Subscription } from 'rxjs';
 
 import { AlertError } from './alert-error.model';
+import { PATIENT_DUPLICATE_TYPE } from 'app/shared/constants/error.constants';
 
 @Component({
   selector: 'jhi-alert-error',
@@ -42,7 +43,9 @@ export class AlertErrorComponent implements OnDestroy {
               errorHeader = httpErrorResponse.headers.get(entry);
             }
           });
-          if (errorHeader) {
+          if (httpErrorResponse.error.type === PATIENT_DUPLICATE_TYPE) {
+            break;
+          } else if (errorHeader) {
             this.addErrorAlert(errorHeader);
           } else if (httpErrorResponse.error !== '' && httpErrorResponse.error.fieldErrors) {
             const fieldErrors = httpErrorResponse.error.fieldErrors;
