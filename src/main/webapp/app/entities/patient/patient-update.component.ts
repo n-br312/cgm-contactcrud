@@ -38,6 +38,8 @@ export class PatientUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ patient }) => {
       this.updateForm(patient);
     });
+
+    this.onChanges();
   }
 
   updateForm(patient: IPatient): void {
@@ -53,6 +55,15 @@ export class PatientUpdateComponent implements OnInit {
       city: patient.city,
       country: patient.country,
       note: patient.note,
+    });
+  }
+
+  onChanges(): void {
+    this.editForm.get('firstname')?.valueChanges.subscribe(() => {
+      this.errorPatientDuplicate = false;
+    });
+    this.editForm.get('surname')?.valueChanges.subscribe(() => {
+      this.errorPatientDuplicate = false;
     });
   }
 
