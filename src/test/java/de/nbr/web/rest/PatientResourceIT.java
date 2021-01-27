@@ -15,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -172,6 +173,27 @@ public class PatientResourceIT {
         assertThat(patientList).hasSize(databaseSizeBeforeCreate);
     }
 
+    @Test
+    @Transactional
+    public void checkPatientIsUnique() throws Exception {
+        int databaseSizeBeforeTest = patientRepository.findAll().size();
+        // Create the Patient
+        restPatientMockMvc.perform(post("/api/patients")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(patient)))
+            .andExpect(status().isCreated());
+
+
+        restPatientMockMvc.perform(post("/api/patients")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(patient)))
+            .andExpect(status().is4xxClientError())
+            .andExpect(content().string("{\"entityName\":\"patientUpdate\",\"errorKey\":\"patientexists\",\"type\":\"https://www.jhipster.tech/problem/patient-duplicate\",\"title\":\"Patient name already used!\",\"status\":400,\"message\":\"error.patientexists\",\"params\":\"patientUpdate\"}"));
+
+        List<Patient> patientList = patientRepository.findAll();
+        assertThat(patientList).hasSize(databaseSizeBeforeTest + 1);
+    }
+
 
     @Test
     @Transactional
@@ -233,7 +255,7 @@ public class PatientResourceIT {
             .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY)))
             .andExpect(jsonPath("$.[*].note").value(hasItem(DEFAULT_NOTE)));
     }
-    
+
     @Test
     @Transactional
     public void getPatient() throws Exception {
