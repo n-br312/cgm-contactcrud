@@ -21,11 +21,11 @@ export class PatientUpdateComponent implements OnInit {
     surname: [null, [Validators.required]],
     email: [null, [Validators.pattern('^[A-Za-z]+@[A-Za-z]+\\.[A-Za-z]+$')]],
     phoneNumber: [],
-    street: [null, [Validators.required]],
-    houseNumber: [null, [Validators.required]],
-    zipcode: [null, [Validators.required]],
-    city: [null, [Validators.required]],
-    country: [null, [Validators.required]],
+    street: [],
+    houseNumber: [],
+    zipcode: [],
+    city: [],
+    country: [],
     note: [],
   });
 

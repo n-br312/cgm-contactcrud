@@ -37,24 +37,19 @@ public class Patient implements Serializable {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @NotNull
-    @Column(name = "street", nullable = false)
+    @Column(name = "street")
     private String street;
 
-    @NotNull
-    @Column(name = "house_number", nullable = false)
+    @Column(name = "house_number")
     private Integer houseNumber;
 
-    @NotNull
-    @Column(name = "zipcode", nullable = false)
+    @Column(name = "zipcode")
     private Integer zipcode;
 
-    @NotNull
-    @Column(name = "city", nullable = false)
+    @Column(name = "city")
     private String city;
 
-    @NotNull
-    @Column(name = "country", nullable = false)
+    @Column(name = "country")
     private String country;
 
     @Column(name = "note")

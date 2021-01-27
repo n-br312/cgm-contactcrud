@@ -4,23 +4,17 @@
     {
       "fieldName": "firstname",
       "fieldType": "String",
-      "fieldValidateRules": [
-        "required"
-      ]
+      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "surname",
       "fieldType": "String",
-      "fieldValidateRules": [
-        "required"
-      ]
+      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "email",
       "fieldType": "String",
-      "fieldValidateRules": [
-        "pattern"
-      ],
+      "fieldValidateRules": ["pattern"],
       "fieldValidateRulesPattern": "^[A-Za-z]+@[A-Za-z]+\\.[A-Za-z]+$"
     },
     {
@@ -29,38 +23,23 @@
     },
     {
       "fieldName": "street",
-      "fieldType": "String",
-      "fieldValidateRules": [
-        "required"
-      ]
+      "fieldType": "String"
     },
     {
       "fieldName": "houseNumber",
-      "fieldType": "Integer",
-      "fieldValidateRules": [
-        "required"
-      ]
+      "fieldType": "Integer"
     },
     {
       "fieldName": "zipcode",
-      "fieldType": "Integer",
-      "fieldValidateRules": [
-        "required"
-      ]
+      "fieldType": "Integer"
     },
     {
       "fieldName": "city",
-      "fieldType": "String",
-      "fieldValidateRules": [
-        "required"
-      ]
+      "fieldType": "String"
     },
     {
       "fieldName": "country",
-      "fieldType": "String",
-      "fieldValidateRules": [
-        "required"
-      ]
+      "fieldType": "String"
     },
     {
       "fieldName": "note",
