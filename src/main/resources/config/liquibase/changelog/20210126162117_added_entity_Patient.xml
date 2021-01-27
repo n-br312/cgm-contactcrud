@@ -53,6 +53,11 @@
     <changeSet id="20210126162117-1-relations" author="jhipster">
 
     </changeSet>
+
+    <changeSet id="20210126162117-1-constraints" author="nbr">
+        <addUniqueConstraint tableName="patient" columnNames="firstname, surname"/>
+    </changeSet>
+
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
 
     <!--
