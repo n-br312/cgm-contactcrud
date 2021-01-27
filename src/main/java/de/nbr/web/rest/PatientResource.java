@@ -1,8 +1,10 @@
 package de.nbr.web.rest;
 
 import de.nbr.domain.Patient;
-import de.nbr.repository.PatientRepository;
+import de.nbr.service.PatientService;
 import de.nbr.web.rest.errors.BadRequestAlertException;
+import de.nbr.service.dto.PatientCriteria;
+import de.nbr.service.PatientQueryService;
 
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
@@ -16,7 +18,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -30,7 +31,6 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("/api")
-@Transactional
 public class PatientResource {
 
     private final Logger log = LoggerFactory.getLogger(PatientResource.class);
@@ -40,10 +40,13 @@ public class PatientResource {
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
-    private final PatientRepository patientRepository;
+    private final PatientService patientService;
 
-    public PatientResource(PatientRepository patientRepository) {
-        this.patientRepository = patientRepository;
+    private final PatientQueryService patientQueryService;
+
+    public PatientResource(PatientService patientService, PatientQueryService patientQueryService) {
+        this.patientService = patientService;
+        this.patientQueryService = patientQueryService;
     }
 
     /**
@@ -59,7 +62,7 @@ public class PatientResource {
         if (patient.getId() != null) {
             throw new BadRequestAlertException("A new patient cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        Patient result = patientRepository.save(patient);
+        Patient result = patientService.save(patient);
         return ResponseEntity.created(new URI("/api/patients/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -80,7 +83,7 @@ public class PatientResource {
         if (patient.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        Patient result = patientRepository.save(patient);
+        Patient result = patientService.save(patient);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, false, ENTITY_NAME, patient.getId().toString()))
             .body(result);
@@ -90,14 +93,27 @@ public class PatientResource {
      * {@code GET  /patients} : get all the patients.
      *
      * @param pageable the pagination information.
+     * @param criteria the criteria which the requested entities should match.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of patients in body.
      */
     @GetMapping("/patients")
-    public ResponseEntity<List<Patient>> getAllPatients(Pageable pageable) {
-        log.debug("REST request to get a page of Patients");
-        Page<Patient> page = patientRepository.findAll(pageable);
+    public ResponseEntity<List<Patient>> getAllPatients(PatientCriteria criteria, Pageable pageable) {
+        log.debug("REST request to get Patients by criteria: {}", criteria);
+        Page<Patient> page = patientQueryService.findByCriteria(criteria, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    /**
+     * {@code GET  /patients/count} : count all the patients.
+     *
+     * @param criteria the criteria which the requested entities should match.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the count in body.
+     */
+    @GetMapping("/patients/count")
+    public ResponseEntity<Long> countPatients(PatientCriteria criteria) {
+        log.debug("REST request to count Patients by criteria: {}", criteria);
+        return ResponseEntity.ok().body(patientQueryService.countByCriteria(criteria));
     }
 
     /**
@@ -109,7 +125,7 @@ public class PatientResource {
     @GetMapping("/patients/{id}")
     public ResponseEntity<Patient> getPatient(@PathVariable Long id) {
         log.debug("REST request to get Patient : {}", id);
-        Optional<Patient> patient = patientRepository.findById(id);
+        Optional<Patient> patient = patientService.findOne(id);
         return ResponseUtil.wrapOrNotFound(patient);
     }
 
@@ -122,7 +138,7 @@ public class PatientResource {
     @DeleteMapping("/patients/{id}")
     public ResponseEntity<Void> deletePatient(@PathVariable Long id) {
         log.debug("REST request to delete Patient : {}", id);
-        patientRepository.deleteById(id);
+        patientService.delete(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString())).build();
     }
 }

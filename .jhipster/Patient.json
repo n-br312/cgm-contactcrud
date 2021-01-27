@@ -51,11 +51,13 @@
   "entityTableName": "patient",
   "dto": "no",
   "pagination": "pagination",
-  "service": "no",
-  "jpaMetamodelFiltering": false,
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
   "fluentMethods": true,
   "readOnly": false,
   "embedded": false,
   "clientRootFolder": "",
-  "applications": "*"
+  "applications": "*",
+  "searchEngine": false,
+  "databaseType": "sql"
 }
