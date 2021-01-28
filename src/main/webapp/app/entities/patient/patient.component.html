@@ -2,6 +2,18 @@
     <h2 id="page-heading">
         <span>Patients</span>
 
+        <button type="submit"
+                (click)="search()"
+                class="btn btn-primary">
+            <fa-icon icon="search"></fa-icon> <span>Filter</span>
+        </button>
+
+        <button type="submit"
+                (click)="resetSearch()"
+                class="btn btn-secondary">
+            <fa-icon icon="search"></fa-icon> <span>Reset Filter</span>
+        </button>
+
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-patient" [routerLink]="['/patient/new']">
             <fa-icon icon="plus"></fa-icon>
             <span>

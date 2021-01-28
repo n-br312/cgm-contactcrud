@@ -5,11 +5,12 @@ import { Subscription, combineLatest } from 'rxjs';
 import { JhiEventManager } from 'ng-jhipster';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { IPatient } from 'app/shared/model/patient.model';
+import { IPatient, Patient } from 'app/shared/model/patient.model';
 
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { PatientService } from './patient.service';
 import { PatientDeleteDialogComponent } from './patient-delete-dialog.component';
+import { PatientSearchDialogComponent } from 'app/entities/patient/patient-search-dialog.component';
 
 @Component({
   selector: 'jhi-patient',
@@ -24,6 +25,7 @@ export class PatientComponent implements OnInit, OnDestroy {
   predicate!: string;
   ascending!: boolean;
   ngbPaginationPage = 1;
+  patientQuery: any;
 
   constructor(
     protected patientService: PatientService,
@@ -36,16 +38,17 @@ export class PatientComponent implements OnInit, OnDestroy {
   loadPage(page?: number, dontNavigate?: boolean): void {
     const pageToLoad: number = page || this.page || 1;
 
-    this.patientService
-      .query({
-        page: pageToLoad - 1,
-        size: this.itemsPerPage,
-        sort: this.sort(),
-      })
-      .subscribe(
-        (res: HttpResponse<IPatient[]>) => this.onSuccess(res.body, res.headers, pageToLoad, !dontNavigate),
-        () => this.onError()
-      );
+    const req = {
+      ...this.patientQuery,
+      page: pageToLoad - 1,
+      size: this.itemsPerPage,
+      sort: this.sort(),
+    };
+
+    this.patientService.query(req).subscribe(
+      (res: HttpResponse<IPatient[]>) => this.onSuccess(res.body, res.headers, pageToLoad, !dontNavigate, req),
+      () => this.onError()
+    );
   }
 
   ngOnInit(): void {
@@ -88,6 +91,55 @@ export class PatientComponent implements OnInit, OnDestroy {
     modalRef.componentInstance.patient = patient;
   }
 
+  resetSearch(): void {
+    this.patientQuery = {};
+    this.loadPage();
+  }
+
+  search(): void {
+    const patient = new Patient();
+    const modalRef = this.modalService.open(PatientSearchDialogComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.patient = patient;
+    modalRef.result.then(result => this.processSearch(result));
+  }
+
+  processSearch(patient: Patient): void {
+    // eslint-disable-next-line no-console
+    console.log(patient);
+    this.patientQuery = {};
+    if (patient.firstname) {
+      this.patientQuery = { ...this.patientQuery, 'firstname.contains': patient.firstname };
+    }
+    if (patient.surname) {
+      this.patientQuery = { ...this.patientQuery, 'surname.contains': patient.surname };
+    }
+    if (patient.city) {
+      this.patientQuery = { ...this.patientQuery, 'city.contains': patient.city };
+    }
+    if (patient.country) {
+      this.patientQuery = { ...this.patientQuery, 'country.contains': patient.country };
+    }
+    if (patient.email) {
+      this.patientQuery = { ...this.patientQuery, 'email.contains': patient.email };
+    }
+    if (patient.houseNumber) {
+      this.patientQuery = { ...this.patientQuery, 'houseNumber.contains': patient.houseNumber };
+    }
+    if (patient.note) {
+      this.patientQuery = { ...this.patientQuery, 'note.contains': patient.note };
+    }
+    if (patient.phoneNumber) {
+      this.patientQuery = { ...this.patientQuery, 'phoneNumber.contains': patient.phoneNumber };
+    }
+    if (patient.street) {
+      this.patientQuery = { ...this.patientQuery, 'street.contains': patient.street };
+    }
+    if (patient.zipcode) {
+      this.patientQuery = { ...this.patientQuery, 'zipcode.contains': patient.zipcode };
+    }
+    this.loadPage();
+  }
+
   sort(): string[] {
     const result = [this.predicate + ',' + (this.ascending ? 'asc' : 'desc')];
     if (this.predicate !== 'id') {
@@ -96,16 +148,12 @@ export class PatientComponent implements OnInit, OnDestroy {
     return result;
   }
 
-  protected onSuccess(data: IPatient[] | null, headers: HttpHeaders, page: number, navigate: boolean): void {
+  protected onSuccess(data: IPatient[] | null, headers: HttpHeaders, page: number, navigate: boolean, query: any): void {
     this.totalItems = Number(headers.get('X-Total-Count'));
     this.page = page;
     if (navigate) {
       this.router.navigate(['/patient'], {
-        queryParams: {
-          page: this.page,
-          size: this.itemsPerPage,
-          sort: this.predicate + ',' + (this.ascending ? 'asc' : 'desc'),
-        },
+        queryParams: query,
       });
     }
     this.patients = data || [];

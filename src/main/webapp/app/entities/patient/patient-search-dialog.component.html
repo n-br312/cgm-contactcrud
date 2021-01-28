@@ -1,0 +1,81 @@
+<div class="row justify-content-center">
+    <div class="col-8 search-margin">
+        <form name="editForm" role="form" novalidate (ngSubmit)="search()" [formGroup]="editForm">
+            <h2 id="jhi-patient-heading">Search for a patient</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_firstname">Firstname</label>
+                    <input type="text" class="form-control" name="firstname" id="field_firstname"
+                           formControlName="firstname"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_surname">Surname</label>
+                    <input type="text" class="form-control" name="surname" id="field_surname"
+                           formControlName="surname"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                           formControlName="email"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_phoneNumber">Phone Number</label>
+                    <input type="text" class="form-control" name="phoneNumber" id="field_phoneNumber"
+                           formControlName="phoneNumber"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_street">Street</label>
+                    <input type="text" class="form-control" name="street" id="field_street"
+                           formControlName="street"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_houseNumber">House Number</label>
+                    <input type="number" class="form-control" name="houseNumber" id="field_houseNumber"
+                           formControlName="houseNumber"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_zipcode">Zipcode</label>
+                    <input type="number" class="form-control" name="zipcode" id="field_zipcode"
+                           formControlName="zipcode"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_city">City</label>
+                    <input type="text" class="form-control" name="city" id="field_city"
+                           formControlName="city"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_country">Country</label>
+                    <input type="text" class="form-control" name="country" id="field_country"
+                           formControlName="country"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_note">Note</label>
+                    <input type="text" class="form-control" name="note" id="field_note"
+                           formControlName="note"/>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid" class="btn btn-primary">
+                    <fa-icon icon="search"></fa-icon>&nbsp;<span>Search</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
