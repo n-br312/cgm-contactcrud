@@ -22,7 +22,7 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
-                    <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
+<!--                    <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>-->
                     <th scope="col"  jhiSortBy="firstname"><span>Firstname</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="surname"><span>Surname</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="email"><span>Email</span> <fa-icon icon="sort"></fa-icon></th>
@@ -38,7 +38,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let patient of patients ;trackBy: trackId">
-                    <td><a [routerLink]="['/patient', patient.id, 'view']">{{ patient.id }}</a></td>
+<!--                    <td><a [routerLink]="['/patient', patient.id, 'view']">{{ patient.id }}</a></td>-->
                     <td>{{ patient.firstname }}</td>
                     <td>{{ patient.surname }}</td>
                     <td>{{ patient.email }}</td>
