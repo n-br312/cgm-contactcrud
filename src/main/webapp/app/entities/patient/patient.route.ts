@@ -4,7 +4,6 @@ import { Resolve, ActivatedRouteSnapshot, Routes, Router } from '@angular/router
 import { Observable, of, EMPTY } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 
-import { Authority } from 'app/shared/constants/authority.constants';
 import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
 import { IPatient, Patient } from 'app/shared/model/patient.model';
 import { PatientService } from './patient.service';
@@ -39,7 +38,7 @@ export const patientRoute: Routes = [
     path: '',
     component: PatientComponent,
     data: {
-      authorities: [Authority.USER],
+      authorities: [],
       defaultSort: 'id,asc',
       pageTitle: 'Patients',
     },
@@ -52,7 +51,7 @@ export const patientRoute: Routes = [
       patient: PatientResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [],
       pageTitle: 'Patients',
     },
     canActivate: [UserRouteAccessService],
@@ -64,7 +63,7 @@ export const patientRoute: Routes = [
       patient: PatientResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [],
       pageTitle: 'Patients',
     },
     canActivate: [UserRouteAccessService],
@@ -76,7 +75,7 @@ export const patientRoute: Routes = [
       patient: PatientResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [],
       pageTitle: 'Patients',
     },
     canActivate: [UserRouteAccessService],
