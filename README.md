@@ -4,7 +4,7 @@
 
 This webapp has been created as part of the application process at CGM.
 The given task was to create a CRUD-App for contact details with filter functionality.
-The base-application has been created with [JHipster](http://www.jhipster.tech).
+The base-application has been created with [JHipster](https://www.jhipster.tech).
 As it covers the basic CRUD requirement and provides a solid base to build upon.
 
 ## Task/Specification and Implementaion
