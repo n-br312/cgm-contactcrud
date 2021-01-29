@@ -40,7 +40,7 @@ public class PatientService {
         PatientCriteria criteria = new PatientCriteria();
         criteria.setFirstname(new StringFilter().setContains(patient.getFirstname()));
         criteria.setSurname(new StringFilter().setContains(patient.getSurname()));
-        if (patientRepository.countByFirstnameAndSurname(patient.getFirstname(), patient.getSurname()) > 0) {
+        if (patientRepository.countByFirstnameIgnoreCaseAndSurnameIgnoreCase(patient.getFirstname(), patient.getSurname()) > 0) {
             throw new PatientAlreadyExistingException();
         }
         return patientRepository.save(patient);

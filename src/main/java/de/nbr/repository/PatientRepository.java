@@ -12,5 +12,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, Long>, JpaSpecificationExecutor<Patient> {
 
-    long countByFirstnameAndSurname(String firstname, String surname);
+    long countByFirstnameIgnoreCaseAndSurnameIgnoreCase(String firstname, String surname);
 }
