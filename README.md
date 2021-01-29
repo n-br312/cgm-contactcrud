@@ -33,3 +33,14 @@ As it covers the basic CRUD requirement and provides a solid base to build upon.
 - [x] Relational Database
   - MySQL + Hibernate
 - [x] Dockerfile
+
+### Deployment
+
+- [x] Deployed at a cloud provider
+  - https://cgm-contactcrud.herokuapp.com/
+- [x] Repository
+  - https://github.com/n-br312/cgm-contactcrud
+- [x] Documentation
+  - this file, as well as the start page of the application
+- [x] Rest api
+  - Documentation of the patients api is provided at: [patients-api_swagger.json](patients-api_swagger.json)
