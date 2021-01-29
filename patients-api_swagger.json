@@ -1,0 +1,1520 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "cgm_contactcrud API documentation",
+    "version": "0.0.1",
+    "title": "cgm_contactcrud API",
+    "contact": {},
+    "license": {
+      "name": "unlicensed"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "patient-resource",
+      "description": "Patient Resource"
+    }
+  ],
+  "paths": {
+    "/api/patients": {
+      "get": {
+        "tags": ["patient-resource"],
+        "summary": "getAllPatients",
+        "operationId": "getAllPatientsUsingGET",
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "city.contains",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "city.doesNotContain",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "city.equals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "city.in",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "city.notEquals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "city.notIn",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "city.specified",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "country.contains",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "country.doesNotContain",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "country.equals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "country.in",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "country.notEquals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "country.notIn",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "country.specified",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "email.contains",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "email.doesNotContain",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "email.equals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "email.in",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "email.notEquals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "email.notIn",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "email.specified",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "firstname.contains",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "firstname.doesNotContain",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "firstname.equals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "firstname.in",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "firstname.notEquals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "firstname.notIn",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "firstname.specified",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "houseNumber.equals",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "houseNumber.greaterThan",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "houseNumber.greaterThanOrEqual",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "houseNumber.in",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "houseNumber.lessThan",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "houseNumber.lessThanOrEqual",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "houseNumber.notEquals",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "houseNumber.notIn",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "houseNumber.specified",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "id.equals",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "id.greaterThan",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "id.greaterThanOrEqual",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "id.in",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "id.lessThan",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "id.lessThanOrEqual",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "id.notEquals",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "id.notIn",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "id.specified",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "note.contains",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "note.doesNotContain",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "note.equals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "note.in",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "note.notEquals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "note.notIn",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "note.specified",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number of the requested page",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "phoneNumber.contains",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phoneNumber.doesNotContain",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phoneNumber.equals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phoneNumber.in",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "phoneNumber.notEquals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phoneNumber.notIn",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "phoneNumber.specified",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "Size of a page",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "street.contains",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "street.doesNotContain",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "street.equals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "street.in",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "street.notEquals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "street.notIn",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "street.specified",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "surname.contains",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "surname.doesNotContain",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "surname.equals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "surname.in",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "surname.notEquals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "surname.notIn",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "surname.specified",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "zipcode.equals",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "zipcode.greaterThan",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "zipcode.greaterThanOrEqual",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "zipcode.in",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "zipcode.lessThan",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "zipcode.lessThanOrEqual",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "zipcode.notEquals",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "zipcode.notIn",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "zipcode.specified",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Patient"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": ["patient-resource"],
+        "summary": "createPatient",
+        "operationId": "createPatientUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "patient",
+            "description": "patient",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Patient"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Patient"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": ["patient-resource"],
+        "summary": "updatePatient",
+        "operationId": "updatePatientUsingPUT",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "patient",
+            "description": "patient",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Patient"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Patient"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/patients/count": {
+      "get": {
+        "tags": ["patient-resource"],
+        "summary": "countPatients",
+        "operationId": "countPatientsUsingGET",
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "city.contains",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "city.doesNotContain",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "city.equals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "city.in",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "city.notEquals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "city.notIn",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "city.specified",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "country.contains",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "country.doesNotContain",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "country.equals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "country.in",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "country.notEquals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "country.notIn",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "country.specified",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "email.contains",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "email.doesNotContain",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "email.equals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "email.in",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "email.notEquals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "email.notIn",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "email.specified",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "firstname.contains",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "firstname.doesNotContain",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "firstname.equals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "firstname.in",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "firstname.notEquals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "firstname.notIn",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "firstname.specified",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "houseNumber.equals",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "houseNumber.greaterThan",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "houseNumber.greaterThanOrEqual",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "houseNumber.in",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "houseNumber.lessThan",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "houseNumber.lessThanOrEqual",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "houseNumber.notEquals",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "houseNumber.notIn",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "houseNumber.specified",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "id.equals",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "id.greaterThan",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "id.greaterThanOrEqual",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "id.in",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "id.lessThan",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "id.lessThanOrEqual",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "id.notEquals",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "id.notIn",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "id.specified",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "note.contains",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "note.doesNotContain",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "note.equals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "note.in",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "note.notEquals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "note.notIn",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "note.specified",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "phoneNumber.contains",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phoneNumber.doesNotContain",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phoneNumber.equals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phoneNumber.in",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "phoneNumber.notEquals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phoneNumber.notIn",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "phoneNumber.specified",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "street.contains",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "street.doesNotContain",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "street.equals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "street.in",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "street.notEquals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "street.notIn",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "street.specified",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "surname.contains",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "surname.doesNotContain",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "surname.equals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "surname.in",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "surname.notEquals",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "surname.notIn",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "surname.specified",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "zipcode.equals",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "zipcode.greaterThan",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "zipcode.greaterThanOrEqual",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "zipcode.in",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "zipcode.lessThan",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "zipcode.lessThanOrEqual",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "zipcode.notEquals",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "zipcode.notIn",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "zipcode.specified",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/patients/{id}": {
+      "get": {
+        "tags": ["patient-resource"],
+        "summary": "getPatient",
+        "operationId": "getPatientUsingGET",
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Patient"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": ["patient-resource"],
+        "summary": "deletePatient",
+        "operationId": "deletePatientUsingDELETE",
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "definitions": {
+    "Patient": {
+      "type": "object",
+      "required": ["firstname", "surname"],
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "pattern": "^[A-Za-z]+@[A-Za-z]+\\.[A-Za-z]+$"
+        },
+        "firstname": {
+          "type": "string"
+        },
+        "houseNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "note": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "surname": {
+          "type": "string"
+        },
+        "zipcode": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "Patient"
+    }
+  }
+}
