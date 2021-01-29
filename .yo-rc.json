@@ -15,7 +15,7 @@
     "websocket": false,
     "databaseType": "sql",
     "devDatabaseType": "h2Disk",
-    "prodDatabaseType": "mysql",
+    "prodDatabaseType": "postgresql",
     "searchEngine": false,
     "messageBroker": false,
     "serviceDiscoveryType": false,
@@ -36,6 +36,9 @@
     "otherModules": [],
     "enableTranslation": false,
     "blueprints": [],
-    "skipUserManagement": true
+    "skipUserManagement": true,
+    "herokuAppName": "cgm-contactcrud",
+    "herokuDeployType": "jar",
+    "herokuJavaVersion": "11"
   }
 }
